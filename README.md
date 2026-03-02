@@ -1,18 +1,111 @@
-# React + Vite
+# ENGLISH <img width="25px" src="./assets/logo.png" /> JANALA
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+---
 
-Currently, two official plugins are available:
+## ⚡ API Endpoints
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Get ⚡ All Levels
 
-## React Compiler
+```bash
+https://openapi.programming-hero.com/api/levels/all
+```
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+1. Get ⚡ Words by Levels <br/>
+   https:// openapi.programming-hero.com/api/level/{id}
 
-Note: This will impact Vite dev & build performances.
+```bash
+https://openapi.programming-hero.com/api/level/5
+```
 
-## Expanding the ESLint configuration
+1. Get ⚡ Words Detail <br/>
+   https:// openapi.programming-hero.com/api/word/{id}
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+https://openapi.programming-hero.com/api/word/5
+```
+
+1. Get ⚡ All Words <br/>
+
+```bash
+https://openapi.programming-hero.com/api/words/all
+```
+
+# Work To do
+
+### 1. Show Levels on The UI
+
+- [ ] Show a center-aligned heading as Figma
+
+---
+
+- [ ] Create dynamically generated buttons from **API-01** for each lesson
+- [ ] Lesson Buttons will be displayed on page load
+
+---
+
+### 2. Show Word Cards Based on Level
+
+- [ ] Show a default text that will be displayed in the Vocabulary section initially
+- [ ] on Clicking a Specific Lesson Button Load All the words from **API-02**
+- [ ] Display all words for a selected lesson in a card format, showing:
+
+  - [ ] Word
+  - [ ] Word meaning & pronunciation
+  - [ ] Two buttons with relevant icons as per Figma
+
+- [ ] Show **\*No Word Found** message if no words exist for a lesson
+
+---
+
+- [ ] Create functionality to highlight the active lesson button
+
+---
+
+### 3. Use Different Color on The Active Level Button
+
+- [ ] After Successfully Loading words of a level , diffirentiate the button so user can understand which button is active
+
+### 4. Vocabulary Details
+
+- [ ] Create functionality to open a modal when clicking the details icon
+- [ ] Data will be load from **API-03**
+- [ ] modal will displays:
+  - [ ] Word with pronunciation
+  - [ ] Example sentence
+  - [ ] Synonyms
+  - [ ] A "Complete Learning" button to close the modal
+
+### 5. Handling Invalid Data
+
+- [ ] avoid displaying falsy values like `undefined` or `null`
+- [ ] display relevant words if no data is found
+
+### 6. Loading Spinner
+
+- [ ] Create a loading spinner that will be display when vocabulary is loading from API
+
+### 7. Implement Search Functionality
+
+- [ ] Take a input Box.
+- [ ] on Changing value It will Search word and show in the UI.
+- [ ] If anyone Do search reset active button
+
+### 8. Save Word Feature
+
+- [ ] in the UI of Card add a button `Heart icon`
+- [ ] on Clicking it. Store the Word in the Saved Box
+- [ ] Show Saved words in a Different Section.
+
+### 9. Speak your Vocabularies
+
+- [ ] Create functionality for voice pronunciation of vocabulary words
+- [ ] Use below function and implement on clicking sound icon
+
+```js
+function pronounceWord(word) {
+  const utterance = new SpeechSynthesisUtterance(word);
+  utterance.lang = "en-EN"; // English
+  window.speechSynthesis.speak(utterance);
+}
+```
+
