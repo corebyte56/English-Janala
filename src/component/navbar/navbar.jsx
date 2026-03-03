@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
-    <nav className="bg-[#BADEFF]/26 backdrop-blur-sm shadow-md">
+    <nav className="bg-[#BADEFF]/26 backdrop-blur-sm shadow-md sticky top-0 z-50">
       <div className="py-2 mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           
