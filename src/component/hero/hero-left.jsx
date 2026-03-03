@@ -4,7 +4,7 @@ import HeroLeftInput from './hero-left-input'
 
 const HeroLeft = () => {
   return (
-    <div>
+    <div className='mx-5 md:mx-0'>
         <HeroLeftText />
         <HeroLeftInput />
     </div>
