@@ -14,7 +14,7 @@ const LessonNum = () => {
 
   return (
     <div className="text-center ">
-      <div className="flex flex-wrap flex-1 justify-center gap-6 mt-4">
+      <div className="flex flex-wrap justify-center gap-6 mt-4">
         {levels.map((level) => (
           <button
             key={level.level_no}
