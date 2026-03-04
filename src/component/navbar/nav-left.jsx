@@ -1,5 +1,5 @@
 import React from 'react'
-import logo from '../../assets/logo.png'
+import logo from "/English-Janala/assets/logo.png";
 
 const NavLeft = () => {
   return (
