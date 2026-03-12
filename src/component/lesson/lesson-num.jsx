@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { BookOpen } from "lucide-react";
+import Card from './lesson-card'
 
 const LessonNum = () => {
   const [levels, setLevels] = useState([]);
@@ -16,6 +17,7 @@ const LessonNum = () => {
       .then((data) => {
         if (data.status) {
           setLevels(data.data);
+          
         }
       })
       .catch((err) => setError(err.message));
