@@ -1,55 +1,82 @@
-import React, { useState, useEffect } from 'react'
-import { Info, Volume2 } from 'lucide-react';
+import { useEffect, useState } from "react";
+import { Info, Volume2 } from "lucide-react";
+import Alert from "../../assets/alert-error.png";
 
-const LessonCard = () => {
-
-  const [card, setCard] = useState([])
-
-  const cardRender = async () => {
-    try {
-      const res = await fetch("https://openapi.programming-hero.com/api/word/all");
-      const data = await res.json();
-
-      setCard(data.data);
-      console.log(data.data);
-
-    } catch (error) {
-      console.log(error);
-    }
-  };
+const LessonCard = ({ idx }) => {
+  const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    cardRender();
-  }, []);
+    const renderCards = async () => {
+      try {
+        const res = await fetch(
+          `https://openapi.programming-hero.com/api/level/${idx}`,
+        );
+
+        const data = await res.json();
+
+        setCards(data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+    renderCards();
+  }, [idx]);
+
+  
+
+  if (cards.length === 0) {
+    return (
+      <div className="container bg-[#F8F8F8] rounded-3xl py-20 px-32 my-7 flex justify-center">
+        <div className="flex flex-col space-y-6 text-center items-center">
+          <img src={Alert} alt="alert" />
+          <p className="text-[#79716B] font-medium text-[20px]">
+            এই Lesson এ এখনো কোন Vocabulary যুক্ত করা হয়নি।
+          </p>
+          <h1 className="text-black font-semibold text-[40px]">
+            নেক্সট Lesson এ যান
+          </h1>
+        </div>
+      </div>
+    );
+  }
 
   return (
-    <div className='grid grid-cols-3 gap-6'>
+    <div className="grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 bg-[#F8F8F8] py-9 px-9 rounded-3xl gap-6 mt-10">
+      {cards.map((card) => (
+        <div
+          key={card.id}
+          className="space-y-6 bg-white rounded-3xl p-8 text-center"
+        >
+          <h3 className="text-2xl font-bold">{card.word}</h3>
 
-      {card.map((item) => (
+          <p className="font-medium">
+            Meaning /Pronounciation
+          </p>
 
-        <div key={item.id} className='space-y-6 border-2 rounded-4xl'>
+          <h3 className="text-xl font-semibold">
+            {card.meaning ? card.meaning : "Not Found"} /{" "}
+            {card.pronunciation ? card.pronunciation : "Not Found"}
+          </h3>
 
-          <div className='space-y-6 px-24 py-14 flex flex-col items-center'>
-            <h3 className='text-2xl font-bold'>{item.word}</h3>
+          <div className="flex justify-between pt-4">
+            <div className="p-2 bg-[#1A91FF]/10 rounded-lg cursor-pointer">
+              <Info />
+            </div>
 
-            <p className='font-medium'>Meaning / Pronunciation</p>
-
-            <h3 className='text-2xl font-bold'>
-              {item.meaning}
-            </h3>
+            <div
+              className="p-2 bg-[#1A91FF]/10 rounded-lg cursor-pointer"
+              onClick={() =>
+                speechSynthesis.speak(new SpeechSynthesisUtterance(card.word))
+              }
+            >
+              <Volume2 />
+            </div>
           </div>
-
-          <div className='flex justify-between px-10 pb-6'>
-            <span><Info /></span>
-            <span><Volume2 /></span>
-          </div>
-
         </div>
-
       ))}
-
     </div>
-  )
-}
+  );
+};
 
-export default LessonCard
+export default LessonCard;
