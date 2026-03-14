@@ -16,13 +16,13 @@ const Lesson = () => {
         {idx ? (
           <LessonCard idx={idx} />
         ) : (
-          <div className="container bg-[#F8F8F8] rounded-3xl py-20 px-32 my-7 flex justify-center">
+          <div className="container bg-[#F8F8F8] mx-auto rounded-3xl py-12 px-9 my-7 flex justify-center">
             <div className="flex flex-col space-y-6 text-center items-center">
               
               <p className="text-[#79716B] font-medium text-[20px]">
                 আপনি এখনো কোন Lesson Select করেন নি
               </p>
-              <h1 className="text-black font-semibold text-[40px]">
+              <h1 className="text-black font-semibold text-[30px] sm:text-[40px]">
                 একটি Lesson Select করুন।
               </h1>
             </div>
