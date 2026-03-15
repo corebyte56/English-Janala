@@ -27,7 +27,7 @@ const LessonCard = ({ idx }) => {
 
   if (cards.length === 0) {
     return (
-      <div className="container bg-[#F8F8F8] rounded-3xl my-7 py-7 px-9 flex justify-center">
+      <div className="container bg-[#F8F8F8] mx-auto rounded-3xl my-7 py-7 px-9 flex justify-center">
         <div className="flex flex-col space-y-6 text-center items-center">
           <img src={Alert} alt="alert" />
           <p className="text-[#79716B] font-medium text-[20px]">
